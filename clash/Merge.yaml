@@ -1,0 +1,109 @@
+# Profile Enhancement Merge Template for Clash Verge
+
+rule-providers:
+  direct:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt"
+    path: ./ruleset/loyalsoldier/direct.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt"
+    path: ./ruleset/loyalsoldier/proxy.yaml
+    interval: 86400
+
+  reject1:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/loyalsoldier/reject.yaml
+    interval: 86400
+
+  reject2:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/earoftoast/clash-rules/main/AD.yaml"
+    path: ./ruleset/AD.yaml
+    interval: 86400
+  
+  private:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt"
+    path: ./ruleset/loyalsoldier/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
+    path: ./ruleset/loyalsoldier/gfw.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+    path: ./ruleset/loyalsoldier/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
+    path: ./ruleset/loyalsoldier/cncidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt"
+    path: ./ruleset/loyalsoldier/applications.yaml
+    interval: 86400
+
+  steam:
+    type: file
+    behavior: classical
+    path: /ruleset/steam.yaml
+
+  microsoft:
+    type: file
+    behavior: classical
+    # url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
+    path: /ruleset/microsoft.yaml
+  
+  onedrive:
+    type: file
+    behavior: classical
+    # url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/OneDrive.list"
+    path: /ruleset/onedrive.yaml
+
+rules:
+  - RULE-SET,reject1,REJECT
+  - RULE-SET,reject2,REJECT
+  - DOMAIN,www.msn.cn,REJECT
+
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve  
+  - RULE-SET,cncidr,DIRECT,no-resolve
+  - RULE-SET,private,DIRECT
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,microsoft,DIRECT
+  - RULE-SET,steam,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - DOMAIN,www.cometbbs.com,DIRECT
+  - DOMAIN,www.bitcomet.com,DIRECT
+  - DOMAIN,zh-v2.d2l.ai,DIRECT
+  - DOMAIN,www.acgjc.com,DIRECT
+    
+  - RULE-SET,proxy,fallback
+  - RULE-SET,telegramcidr,fallback,no-resolve
+  - RULE-SET,onedrive,fallback
+  - DOMAIN,dl.google.com,fallback
+  
+  - MATCH,fallback
