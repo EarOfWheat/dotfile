@@ -83,6 +83,8 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	conda-zsh-completion
+    rust
+    python
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export windownload="/mnt/d/Download"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,12 +120,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g++='g++ -std=c++23'
 alias gxx=g++
-alias py=python3
 alias apt='_ apt'
 alias aptu='apt update && apt upgrade -y'
 alias vi=vim
 alias docker='_ docker'
-alias rm='rm -I'
 alias code.='code .'
 alias code。=code.
 alias bat=batcat
@@ -167,5 +168,9 @@ if [[ -z "$TMUX" ]]; then
         tmux attach-session -t "$ID" # if available attach to it
     fi
 fi
+
+# rustup config
+export RUSTUP_UPDATE_ROOT=https://mirror.nju.edu.cn/rustup/rustup
+export RUSTUP_DIST_SERVER=https://mirror.nju.edu.cn/rustup
 
 export GPG_TTY=$(tty)

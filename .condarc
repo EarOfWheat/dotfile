@@ -1,0 +1,5 @@
+channels:
+  - conda-forge
+mirrored_channels:
+  conda-forge:
+    - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge
