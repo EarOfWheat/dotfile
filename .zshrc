@@ -85,6 +85,7 @@ plugins=(
 	conda-zsh-completion
     rust
     python
+    docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -127,8 +128,11 @@ alias docker='_ docker'
 alias code.='code .'
 alias code。=code.
 alias bat=batcat
+alias cat='bat -pp'
 alias ls=eza
 alias zh="LANG=zh_CN.UTF-8"
+alias fzfp="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
+alias wx="docker run -d -p 3001:3001 -v ./config:/config nickrunning/wechat-selkies:latest"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

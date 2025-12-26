@@ -1,0 +1,16 @@
+# ignore everything
+*
+
+# exception
+!.gitignore
+!.*rc
+!.tmux.conf
+!README.md
+!start-tmux.sh
+
+!.config/
+!.cargo/config.toml
+!.cargo/
+!.cargo/**
+!clash/
+!clash/**
