@@ -93,6 +93,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
 export windownload="/mnt/d/Download"
 
 # You may need to manually set your language environment
@@ -122,7 +126,7 @@ export windownload="/mnt/d/Download"
 alias g++='g++ -std=c++23'
 alias gxx=g++
 alias apt='_ apt'
-alias aptu='apt update && apt upgrade -y'
+alias aptu='apt update && apt full-upgrade -y'
 alias vi=vim
 alias docker='_ docker'
 alias code.='code .'
@@ -132,7 +136,7 @@ alias cat='bat -pp'
 alias ls=eza
 alias zh="LANG=zh_CN.UTF-8"
 alias fzfp="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
-alias wx="docker run -d -p 3001:3001 -v ./config:/config nickrunning/wechat-selkies:latest"
+alias wx="docker run -d -p 3001:3001 -v ~/Documents/wx_config:/config nickrunning/wechat-selkies:latest"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
