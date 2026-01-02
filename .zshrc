@@ -34,6 +34,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:plugins:eza' 'git-status' yes
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -80,6 +81,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 plugins=(
 	git
 	vi-mode
+    eza
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	conda-zsh-completion
@@ -133,7 +135,6 @@ alias code.='code .'
 alias code。=code.
 alias bat=batcat
 alias cat='bat -pp'
-alias ls=eza
 alias zh="LANG=zh_CN.UTF-8"
 alias fzfp="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
 alias wx="docker run -d -p 3001:3001 -v ~/Documents/wx_config:/config nickrunning/wechat-selkies:latest"

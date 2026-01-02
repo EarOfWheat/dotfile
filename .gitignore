@@ -3,6 +3,8 @@
 
 # exception
 !.gitignore
+!.gitconfig
+!.profile
 !.*rc
 !.tmux.conf
 !README.md
