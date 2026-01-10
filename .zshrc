@@ -129,6 +129,7 @@ alias g++='g++ -std=c++23'
 alias gxx=g++
 alias apt='_ apt'
 alias aptu='apt update && apt full-upgrade -y'
+alias rsync='rsync -P'
 alias vi=vim
 alias docker='_ docker'
 alias code.='code .'
@@ -137,7 +138,6 @@ alias bat=batcat
 alias cat='bat -pp'
 alias zh="LANG=zh_CN.UTF-8"
 alias fzfp="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
-alias wx="docker run -d -p 3001:3001 -v ~/Documents/wx_config:/config nickrunning/wechat-selkies:latest"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -183,3 +183,33 @@ export RUSTUP_UPDATE_ROOT=https://mirror.nju.edu.cn/rustup/rustup
 export RUSTUP_DIST_SERVER=https://mirror.nju.edu.cn/rustup
 
 export GPG_TTY=$(tty)
+
+wechat() {
+    local IMAGE_NAME="nickrunning/wechat-selkies:latest"
+    local CONTAINER_NAME="wechat-selkies"
+
+    # 1. 检查是否有基于该镜像的容器正在运行
+    if [ "$(docker ps -q -f "ancestor=$IMAGE_NAME" -f "status=running")" ]; then
+        echo "提示：容器 $IMAGE_NAME 已经在运行中。
+        https://localhost:3001"
+        return 0
+    fi
+
+    # 2. 检查是否有基于该镜像但处于停止状态的容器
+    local EXITED_CONTAINER_ID=$(docker ps -aq -f "ancestor=$IMAGE_NAME" -f "status=exited" | head -n 1)
+
+    if [ -n "$EXITED_CONTAINER_ID" ]; then
+        echo "发现已停止的容器，正在尝试恢复运行...
+        https://localhost:3001"
+        docker start "$EXITED_CONTAINER_ID"
+    else
+        # 3. 如果既没有运行也没有停止的容器，则执行全新的 docker run
+        echo "未发现现有容器，正在启动新容器...
+        https://localhost:3001"
+        docker run -d \
+            --name "$CONTAINER_NAME" \
+            -p 3001:3001 \
+            -v ~/Documents/wx_config:/config \
+            "$IMAGE_NAME"
+    fi
+}
