@@ -5,63 +5,63 @@ rule-providers:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt"
-    path: /ruleset/loyalsoldier/direct.yaml
+    path: ./ruleset/loyalsoldier/direct.yaml
     interval: 86400
 
   proxy:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt"
-    path: /ruleset/loyalsoldier/proxy.yaml
+    path: ./ruleset/loyalsoldier/proxy.yaml
     interval: 86400
 
   reject1:
     type: http
     behavior: domain
     url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
-    path: /ruleset/loyalsoldier/reject.yaml
+    path: ./ruleset/loyalsoldier/reject.yaml
     interval: 86400
 
   reject2:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/earoftoast/clash-rules/main/AD.yaml"
-    path: /ruleset/AD.yaml
+    path: ./ruleset/AD.yaml
     interval: 86400
   
   private:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt"
-    path: /ruleset/loyalsoldier/private.yaml
+    path: ./ruleset/loyalsoldier/private.yaml
     interval: 86400
 
   gfw:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
-    path: /ruleset/loyalsoldier/gfw.yaml
+    path: ./ruleset/loyalsoldier/gfw.yaml
     interval: 86400
 
   telegramcidr:
     type: http
     behavior: ipcidr
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
-    path: /ruleset/loyalsoldier/telegramcidr.yaml
+    path: ./ruleset/loyalsoldier/telegramcidr.yaml
     interval: 86400
 
   cncidr:
     type: http
     behavior: ipcidr
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt"
-    path: /ruleset/loyalsoldier/cncidr.yaml
+    path: ./ruleset/loyalsoldier/cncidr.yaml
     interval: 86400
 
   applications:
     type: http
     behavior: classical
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt"
-    path: /ruleset/loyalsoldier/applications.yaml
+    path: ./ruleset/loyalsoldier/applications.yaml
     interval: 86400
 
   steam:
@@ -92,7 +92,6 @@ rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,applications,DIRECT
   - RULE-SET,direct,DIRECT
-  - RULE-SET,onedrive,fallback
   - RULE-SET,microsoft,DIRECT
   - RULE-SET,steam,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
@@ -101,10 +100,10 @@ rules:
   - DOMAIN,www.bitcomet.com,DIRECT
   - DOMAIN,zh-v2.d2l.ai,DIRECT
   - DOMAIN,www.acgjc.com,DIRECT
-  - DOMAIN,debian.org,DIRECT
     
   - RULE-SET,proxy,fallback
   - RULE-SET,telegramcidr,fallback,no-resolve
+  - RULE-SET,onedrive,fallback
   - DOMAIN,dl.google.com,fallback
   
   - MATCH,fallback

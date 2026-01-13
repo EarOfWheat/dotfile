@@ -10,10 +10,17 @@
 !README.md
 !start-tmux.sh
 
-!.config/
-!.config/**
-!.cargo/config.toml
+!.config
+!.config/alacritty
+!.config/alacritty/**
+!.config/niri
+!.config/niri/**
+!.config/btop
+!.config/btop/**
+!.config/nvim
+!.config/nvim/**
+
 !.cargo/
-!.cargo/**
+!.cargo/config.toml
 !clash/
 !clash/**

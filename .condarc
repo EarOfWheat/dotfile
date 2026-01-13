@@ -3,3 +3,6 @@ channels:
 mirrored_channels:
   conda-forge:
     - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge
+    - https://conda.anaconda.org/conda-forge
+    - https://prefix.dev/conda-forge
+
