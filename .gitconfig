@@ -1,0 +1,10 @@
+[user]
+	email = ear.wheat@outlook.com
+	name = EarOfWheat
+	signingkey = ear.wheat@outlook.com
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[core]
+	editor = vim

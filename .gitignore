@@ -1,0 +1,28 @@
+# ignore everything
+*
+
+# exception
+!.gitignore
+!.gitconfig
+!.profile
+!.*rc
+!.tmux.conf
+!README.md
+!start-tmux.sh
+
+!.config
+!.config/alacritty
+!.config/alacritty/**
+!.config/niri
+!.config/niri/**
+!.config/btop
+!.config/btop/**
+!.config/nvim
+!.config/nvim/**
+!.config/aliases.zsh
+!.config/vscode_ui.css
+
+!.cargo/
+!.cargo/config.toml
+!clash/
+!clash/**

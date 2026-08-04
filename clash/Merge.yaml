@@ -1,0 +1,137 @@
+# Profile Enhancement Merge Template for Clash Verge
+
+pg: &pg
+  type: select
+  proxies: ["🚀 节点选择", "⚡ 自动选择", DIRECT, REJECT, "🇯🇵 日本节点", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇺🇸 美国节点"]
+
+pg_t: &pg_t
+  interval: 300
+  tolerance: 800
+
+proxy-groups:
+  - name: "🚀 节点选择"
+    type: select
+    exclude-filter: "(?i)(过期|剩余|流量|套餐|订阅)"
+    include-all: true
+  - name: "⚡ 自动选择"
+    type: url-test
+    <<: *pg_t
+    exclude-filter: "(?i)(俄|过期|剩余|流量|套餐|订阅)"
+    include-all: true
+  - name: "🤖 AI 服务"
+    <<: *pg
+  - name: "📲 电报消息"
+    <<: *pg
+  - name: "🌍 非中国"
+    <<: *pg
+  - name: "🐟 漏网之鱼"
+    <<: *pg
+
+  - name: 🇭🇰 香港节点
+    type: fallback
+    <<: *pg_t
+    filter: "(?i)港|hk|hongkong"
+    include-all: true
+  - name: 🇹🇼 台湾节点
+    type: fallback
+    <<: *pg_t
+    filter: "(?i)台|tw|taiwan"
+    include-all: true
+  - name: 🇯🇵 日本节点
+    type: fallback
+    <<: *pg_t
+    filter: "(?i)日|jp|japan"
+    include-all: true
+  - name: 🇺🇸 美国节点
+    type: fallback
+    <<: *pg_t
+    filter: "(?i)美|us|unitedstates"
+    include-all: true
+
+
+rp_dom: &rp_dom
+  type: http
+  behavior: domain
+  interval: 86400
+  format: mrs
+
+rp_ip: &rp_ip
+  type: http
+  behavior: ipcidr
+  interval: 86400
+  format: mrs
+
+rule-providers:
+  ads-all: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ads-all.mrs", path: ./ruleset/ads-all.mrs}
+  private: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs", path: ./ruleset/private.mrs}
+  private-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs", path: ./ruleset/private-ip.mrs}
+  geolocation-cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-cn.mrs", path: ./ruleset/geolocation-cn.mrs}
+  cn-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs", path: ./ruleset/cn-ip.mrs}
+  geolocation-!cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs", path: "./ruleset/geolocation-!cn.mrs"}
+  ai-!cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs", path: "./ruleset/ai-!cn.mrs"}
+  google: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/google.mrs", path: ./ruleset/google.mrs}
+  google-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs", path: ./ruleset/google-ip.mrs}
+  microsoft: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft.mrs", path: ./ruleset/microsoft.mrs}
+  github: {<<: *rp_dom, url: https://github.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs, path: ./ruleset/github.mrs}
+  onedrive: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/onedrive.mrs", path: ./ruleset/onedrive.mrs}
+  telegram: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs", path: ./ruleset/telegram.mrs}
+  telegram-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs", path: ./ruleset/telegram-ip.mrs}
+  games: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-games.mrs", path: ./ruleset/games.mrs}
+  game-platforms-download@cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-game-platforms-download@cn.mrs", path: ./ruleset/game-platforms-download@cn.mrs}
+  cloudflare: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cloudflare.mrs", path: ./ruleset/cloudflare.mrs}
+  cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs", path: ./ruleset/cn.mrs}
+  steam@cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs", path: ./ruleset/steam@cn.mrs}
+    # type: http
+    # behavior: classical
+    # url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.yaml
+    # path: ./ruleset/steam@cn.yaml
+    # interval: 86400
+
+
+rules:
+  - RULE-SET,ads-all,REJECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,private-ip,DIRECT,no-resolve
+
+  # my
+  - DOMAIN,elysia.h-e.top,DIRECT
+  - DOMAIN,translate-api.6655.pp.ua,DIRECT
+  - DOMAIN,muyuan.do,DIRECT
+  - DOMAIN,newapi.linuxdo.edu.rs,DIRECT
+  - DOMAIN,api.42w.shop,DIRECT
+  - DOMAIN-SUFFIX,localsend.org,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - DOMAIN,www.cometbbs.com,DIRECT
+  - DOMAIN,www.bitcomet.com,DIRECT
+  - DOMAIN,zh-v2.d2l.ai,DIRECT
+  - DOMAIN,www.acgjc.com,DIRECT
+  - DOMAIN-SUFFIX,debian.org,DIRECT
+  - DOMAIN-SUFFIX,gnu.org,DIRECT
+  - DOMAIN,xget.xi-xu.me,DIRECT
+  - DOMAIN,www.speedtest.net,DIRECT
+
+  - RULE-SET,ai-!cn,🤖 AI 服务
+  - RULE-SET,cloudflare,DIRECT
+  - RULE-SET,geolocation-cn,DIRECT
+  - RULE-SET,game-platforms-download@cn,DIRECT
+  - RULE-SET,steam@cn,DIRECT
+  - RULE-SET,cn-ip,DIRECT,no-resolve
+  
+  - RULE-SET,google,🌍 非中国
+  - RULE-SET,google-ip,🌍 非中国,no-resolve
+  - RULE-SET,github,🌍 非中国
+  - RULE-SET,onedrive,🌍 非中国
+  - RULE-SET,telegram,📲 电报消息
+  - RULE-SET,telegram-ip,📲 电报消息,no-resolve
+  - RULE-SET,games,🌍 非中国
+  - DOMAIN,www.dlsite.com,🇯🇵 日本节点
+  - DOMAIN,www.nicovideo.jp,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,dmm.co.jp,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,dmm.com,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,fanza.co.jp,🇯🇵 日本节点
+  - RULE-SET,microsoft,DIRECT
+  - RULE-SET,geolocation-!cn,🌍 非中国
+  
+  - RULE-SET,cn,DIRECT
+  - MATCH,🐟 漏网之鱼
