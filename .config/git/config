@@ -1,0 +1,10 @@
+[user]
+	email = 
+	name = EarOfWheat
+	signingkey = 
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[core]
+	editor = nvim

@@ -90,18 +90,17 @@ plugins=(
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
+
+if [[ ! -d $XDG_CACHE_HOME/zsh ]]; then
+    mkdir -p $XDG_CACHE_HOME/zsh
+fi
+
+autoload -U compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump-${HOST}-${ZSH_VERSION}"
 
 source $ZSH/oh-my-zsh.sh
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_STATE_HOME="$HOME/.local/state"
+# User configuration
 if [[ -n $(uname -a | grep WSL) ]]; then
     export WIN_DOWNLOAD="/mnt/d/Download"
     export WIN_HOME="/mnt/c/Users/wjack"
@@ -131,7 +130,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.config/aliases.zsh
+source $XDG_CONFIG_HOME/aliases.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -225,4 +224,7 @@ PERL_MB_OPT="--install_base \"/home/wheat/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/wheat/perl5"; export PERL_MM_OPT;
 
 # opencode
-export PATH=/home/wheat/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
+
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

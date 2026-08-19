@@ -112,6 +112,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
 export GPG_TTY=$(tty)

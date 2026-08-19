@@ -3,26 +3,39 @@
 
 # exception
 !.gitignore
-!.gitconfig
 !.profile
+!.zshenv
 !.*rc
 !.tmux.conf
 !README.md
 !start-tmux.sh
 
 !.config
+!.config/git
+!.config/git/**
 !.config/alacritty
 !.config/alacritty/**
+!.config/kitty
+!.config/kitty/**
+!.config/noctalia/
+!.config/noctalia/**
 !.config/niri
 !.config/niri/**
 !.config/btop
 !.config/btop/**
 !.config/nvim
 !.config/nvim/**
+!.config/uv
+!.config/uv/uv.toml
 !.config/aliases.zsh
 !.config/vscode_ui.css
+!.config/fcitx5
+!.config/fcitx5/**
 
 !.cargo/
 !.cargo/config.toml
 !clash/
 !clash/**
+!.local
+!.local/bin
+!.local/bin/**
