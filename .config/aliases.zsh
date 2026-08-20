@@ -12,6 +12,9 @@ alias code.='code .'
 alias code。=code.
 alias bat=batcat
 alias cat='bat -pp'
+alias fd=fdfind
+alias find=fd
+alias grep=rg
 alias g++='g++ -std=c++23'
 alias gxx=g++
 alias rsync='rsync -P'

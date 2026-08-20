@@ -1,5 +1,3 @@
-# Profile Enhancement Merge Template for Clash Verge
-
 pg: &pg
   type: select
   proxies: ["🚀 节点选择", "⚡ 自动选择", DIRECT, REJECT, "🇯🇵 日本节点", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇺🇸 美国节点"]
@@ -11,7 +9,7 @@ pg_t: &pg_t
 proxy-groups:
   - name: "🚀 节点选择"
     type: select
-    exclude-filter: "(?i)(过期|剩余|流量|套餐|订阅)"
+    exclude-filter: "(?i)(过期|剩余|套餐|订阅)"
     include-all: true
   - name: "⚡ 自动选择"
     type: url-test
@@ -94,18 +92,12 @@ rules:
   - RULE-SET,private-ip,DIRECT,no-resolve
 
   # my
-  - DOMAIN,elysia.h-e.top,DIRECT
-  - DOMAIN,translate-api.6655.pp.ua,DIRECT
-  - DOMAIN,muyuan.do,DIRECT
-  - DOMAIN,newapi.linuxdo.edu.rs,DIRECT
-  - DOMAIN,api.42w.shop,DIRECT
   - DOMAIN-SUFFIX,localsend.org,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - DOMAIN,www.cometbbs.com,DIRECT
   - DOMAIN,www.bitcomet.com,DIRECT
   - DOMAIN,zh-v2.d2l.ai,DIRECT
-  - DOMAIN,www.acgjc.com,DIRECT
   - DOMAIN-SUFFIX,debian.org,DIRECT
   - DOMAIN-SUFFIX,gnu.org,DIRECT
   - DOMAIN,xget.xi-xu.me,DIRECT
@@ -130,6 +122,7 @@ rules:
   - DOMAIN-SUFFIX,dmm.co.jp,🇯🇵 日本节点
   - DOMAIN-SUFFIX,dmm.com,🇯🇵 日本节点
   - DOMAIN-SUFFIX,fanza.co.jp,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,ani.gamer.com.tw,🇹🇼 台湾节点
   - RULE-SET,microsoft,DIRECT
   - RULE-SET,geolocation-!cn,🌍 非中国
   
