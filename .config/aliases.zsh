@@ -1,5 +1,5 @@
 alias apt='_ apt'
-alias aptu='apt update && apt full-upgrade -y'
+alias aptu='apt update && apt full-upgrade -y && apt autoremove'
 alias docker='_ docker'
 alias zh='LANG=zh_CN.UTF-8'
 
