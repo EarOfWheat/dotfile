@@ -6,7 +6,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export GPG_TTY=$TTY
 
-if command -v nvim
+if command -v nvim > /dev/null 2>&1
 then
     export EDITOR=nvim
 	export VISUAL=nvim
