@@ -81,11 +81,6 @@ rule-providers:
   cloudflare: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cloudflare.mrs", path: ./ruleset/cloudflare.mrs}
   cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs", path: ./ruleset/cn.mrs}
   steam@cn: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs", path: ./ruleset/steam@cn.mrs}
-    # type: http
-    # behavior: classical
-    # url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.yaml
-    # path: ./ruleset/steam@cn.yaml
-    # interval: 86400
 
 
 rules:
