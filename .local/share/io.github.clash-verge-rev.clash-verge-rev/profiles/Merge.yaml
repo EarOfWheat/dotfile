@@ -11,7 +11,7 @@ pg_t: &pg_t
 proxy-groups:
   - name: "🚀 节点选择"
     type: select
-    exclude-filter: "(?i)(过期|剩余|流量|套餐|订阅)"
+    exclude-filter: "(?i)(过期|剩余|套餐|订阅)"
     include-all: true
   - name: "⚡ 自动选择"
     type: url-test
@@ -72,7 +72,7 @@ rule-providers:
   google: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/google.mrs", path: ./ruleset/google.mrs}
   google-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs", path: ./ruleset/google-ip.mrs}
   microsoft: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft.mrs", path: ./ruleset/microsoft.mrs}
-  github: {<<: *rp_dom, url: https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/github.mrs, path: ./ruleset/github.mrs}
+  github: {<<: *rp_dom, url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs, path: ./ruleset/github.mrs}
   onedrive: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/onedrive.mrs", path: ./ruleset/onedrive.mrs}
   telegram: {<<: *rp_dom, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs", path: ./ruleset/telegram.mrs}
   telegram-ip: {<<: *rp_ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs", path: ./ruleset/telegram-ip.mrs}
@@ -94,22 +94,19 @@ rules:
   - RULE-SET,private-ip,DIRECT,no-resolve
 
   # my
-  - DOMAIN,elysia.h-e.top,DIRECT
-  - DOMAIN,translate-api.6655.pp.ua,DIRECT
-  - DOMAIN,muyuan.do,DIRECT
-  - DOMAIN,newapi.linuxdo.edu.rs,DIRECT
-  - DOMAIN,api.42w.shop,DIRECT
   - DOMAIN-SUFFIX,localsend.org,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - DOMAIN,www.cometbbs.com,DIRECT
   - DOMAIN,www.bitcomet.com,DIRECT
   - DOMAIN,zh-v2.d2l.ai,DIRECT
-  - DOMAIN,www.acgjc.com,DIRECT
   - DOMAIN-SUFFIX,debian.org,DIRECT
   - DOMAIN-SUFFIX,gnu.org,DIRECT
   - DOMAIN,xget.xi-xu.me,DIRECT
   - DOMAIN,www.speedtest.net,DIRECT
+  - DOMAIN,opencode.ai,DIRECT
+  # - DOMAIN,github.com,🌍 非中国
+  # - DOMAIN,raw.githubusercontent.com,🌍 非中国
 
   - RULE-SET,ai-!cn,🤖 AI 服务
   - RULE-SET,cloudflare,DIRECT
@@ -130,6 +127,7 @@ rules:
   - DOMAIN-SUFFIX,dmm.co.jp,🇯🇵 日本节点
   - DOMAIN-SUFFIX,dmm.com,🇯🇵 日本节点
   - DOMAIN-SUFFIX,fanza.co.jp,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,ani.gamer.com.tw,🇹🇼 台湾节点
   - RULE-SET,microsoft,DIRECT
   - RULE-SET,geolocation-!cn,🌍 非中国
   
