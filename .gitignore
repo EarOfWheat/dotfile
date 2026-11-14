@@ -1,0 +1,66 @@
+# ignore everything
+*
+
+# white list
+# base
+!.gitignore
+!.profile
+!.zshenv
+!.zshrc
+!.bashrc
+!.bash_profile
+!.inputrc
+!.tmux.conf
+!README.md
+
+!/.config/
+!/.config/git/
+!/.config/git/**
+!/.config/alacritty/
+!/.config/alacritty/**
+!/.config/kitty/
+!/.config/kitty/**
+!/.config/noctalia/
+!/.config/noctalia/**
+!/.config/niri/
+!/.config/niri/**
+!/.config/btop/
+!/.config/btop/**
+!/.config/nvim/
+!/.config/nvim/**
+!/.config/uv/
+!/.config/uv/uv.toml
+!/.config/zsh/
+!/.config/zsh/**
+!/.config/vscode_ui.css
+!/.config/fcitx5/
+!/.config/fcitx5/**
+!/.config/fontconfig/
+!/.config/fontconfig/fonts.conf
+!/.config/systemd/
+!/.config/systemd/user/
+!/.config/systemd/user/**
+!/.config/environment.d/
+!/.config/environment.d/**
+!/.config/uwsm/
+!/.config/uwsm/**
+!/.config/mimeapps.list
+!/.config/user-dirs.dirs
+
+!/.cargo/
+!/.cargo/config.toml
+!/.local/
+!/.local/bin/
+!/.local/bin/*.sh
+
+# senstive files
+.config/git/credentials
+.config/git/**/credential*
+.config/gh/hosts.yml
+.config/nvim/.netrwhist
+**/*.pem
+**/*.key
+**/id_rsa*
+**/id_ed25519*
+**/id_ecdsa*
+# 私密变量不要进仓库，放 ~/.zshenv.local 并保持被忽略

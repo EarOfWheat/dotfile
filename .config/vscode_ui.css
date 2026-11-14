@@ -1,0 +1,19 @@
+/* 全局强行清空所有元素的圆角 */
+*, 
+*::before, 
+*::after,
+.monaco-workbench,
+.monaco-list-row,
+.monaco-inputbox,
+.monaco-button,
+.monaco-dropdown,
+.monaco-menu,
+.monaco-dialog-box,
+.command-center,
+.quick-input-widget,
+.notifications-toasts,
+.part,
+.tabs-container,
+.tab {
+    border-radius: 0px !important;
+}

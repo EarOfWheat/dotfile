@@ -1,0 +1,18 @@
+[user]
+	email = ear.wheat@outlook.com
+	name = EarOfWheat
+	signingkey = ear.wheat@outlook.com
+[commit]
+        gpgsign = true
+[tag]
+        gpgSign = true
+[core]
+        editor = vim
+        quotepath = false
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+[init]
+        defaultBranch = main

@@ -1,0 +1,25 @@
+[Added Associations]
+image/avif=io.github.d2phap.imageglass.desktop;
+image/bmp=io.github.d2phap.imageglass.desktop;
+image/heif=io.github.d2phap.imageglass.desktop;
+image/jpeg=io.github.d2phap.imageglass.desktop;
+image/png=io.github.d2phap.imageglass.desktop;
+image/svg+xml=io.github.d2phap.imageglass.desktop;gimp.desktop;org.kde.gwenview.desktop;krita_svg.desktop;firefox-esr.desktop;kfmclient_html.desktop;org.kde.kate.desktop;org.kde.kwrite.desktop;emacsclient.desktop;emacs-term.desktop;nvim.desktop;vim.desktop;okularApplication_txt.desktop;libreoffice-writer.desktop;emacs.desktop;
+image/tiff=io.github.d2phap.imageglass.desktop;org.kde.gwenview.desktop;display-im7.q16.desktop;gimp.desktop;okularApplication_kimgio.desktop;krita_tiff.desktop;
+image/webp=io.github.d2phap.imageglass.desktop;
+image/x-icns=io.github.d2phap.imageglass.desktop;
+
+x-scheme-handler/clash=clash-verge.desktop;
+x-scheme-handler/clash-verge=clash-verge.desktop;
+[Default Applications]
+image/avif=io.github.d2phap.imageglass.desktop;
+image/bmp=io.github.d2phap.imageglass.desktop;
+image/heif=io.github.d2phap.imageglass.desktop;
+image/jpeg=io.github.d2phap.imageglass.desktop;
+image/png=io.github.d2phap.imageglass.desktop;
+image/svg+xml=io.github.d2phap.imageglass.desktop;
+image/tiff=io.github.d2phap.imageglass.desktop;
+image/webp=io.github.d2phap.imageglass.desktop;
+image/x-icns=io.github.d2phap.imageglass.desktop;
+x-scheme-handler/clash=clash-verge.desktop;
+x-scheme-handler/clash-verge=clash-verge.desktop;

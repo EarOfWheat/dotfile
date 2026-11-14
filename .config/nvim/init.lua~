@@ -1,0 +1,93 @@
+vim.opt.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.termguicolors = true
+vim.o.complete = "w,b,u,t"
+vim.o.colorcolumn = "80,100"
+vim.o.updatetime = 250
+
+-- vim.pack.add({
+-- 	{ src = 'https://github.com/stevearc/oil.nvim' },
+-- 	-- ui
+-- 	{ src = 'https://github.com/folke/tokyonight.nvim' },
+-- 	{ src = 'https://github.com/akinsho/bufferline.nvim' },
+--     { src = 'https://github.com/nvim-lualine/lualine.nvim' } ,
+-- 	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
+-- 	-- lsp
+-- 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
+-- 	{ src = 'https://github.com/stevearc/conform.nvim' },
+-- 	-- utils
+-- 	{ src = 'https://github.com/kylechui/nvim-surround',
+-- 		version = vim.version.range("4.x")
+-- 		-- Use for stability; omit to use `main` branch for the latest features
+-- 	},
+-- 	{ src = 'https://github.com/windwp/nvim-autopairs' },
+-- 	{ src = 'https://github.com/folke/which-key.nvim' },
+-- 	{ src = 'https://github.com/saghen/blink.lib' },
+-- 	{ src = 'https://github.com/saghen/blink.cmp' },
+-- 	{ src = 'https://github.com/lewis6991/gitsigns.nvim' },
+-- 	-- { src = 'https://github.com/folke/flash.nvim' },
+-- })
+--
+-- require("tokyonight").setup({
+-- 	style = "night",
+-- 	transparent = true
+-- })
+-- vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd [[highlight ColorColumn ctermbg=lightgrey]]
+--
+-- require("lualine").setup {
+-- 	options = {
+-- 		theme = "nord",
+-- 		section_separators = '',
+-- 		component_separators = '|'
+-- 	}
+-- }
+-- require("bufferline").setup {}
+--
+-- require("oil").setup()
+-- require("nvim-autopairs").setup {}
+-- require("which-key").setup {}
+-- require("gitsigns").setup {}
+
+
+-- -- -- ==========================================
+-- -- -- LSP 配置
+-- -- -- ==========================================
+-- -- --  配置 bashls 并让其同时支持 bash 和 zsh 文件
+-- -- vim.lsp.config('bashls', {
+-- --     filetypes = { 'sh', 'bash', 'zsh' }, -- 让 zsh 也走 bash-language-server
+-- -- })
+-- --
+-- -- --  统一启用配置的 LSP 服务
+-- -- vim.lsp.enable({
+-- --     'bashls',
+-- -- })
+-- --
+-- -- --  简单的 LSP 快捷键绑定（当 LSP 附加到缓冲区时触发）
+-- -- vim.api.nvim_create_autocmd('LspAttach', {
+-- --     callback = function(args)
+-- --         local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- --         local opts = { buffer = args.buf }
+-- --
+-- --         -- 常用的标准 LSP 快捷键
+-- --         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)      -- 定义跳转
+-- --         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)          -- 悬停查看文档
+-- --         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)  -- 变量重命名
+-- --         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts) -- 代码行为
+-- --     end,
+-- -- })
+-- --
+-- -- local cmp = require('blink.cmp')
+-- -- cmp.setup({
+-- --     keymap = { preset = 'default' },
+-- --     appearance = {
+-- --         use_nvim_cmp_as_default = true,
+-- --         nerd_font_variant = 'mono'
+-- --     },
+-- --     sources = {
+-- --         default = { 'lsp', 'path', 'snippets', 'buffer' },
+-- --     },
+-- -- })
