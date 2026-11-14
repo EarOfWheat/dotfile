@@ -52,6 +52,10 @@
 !/.local/
 !/.local/bin/
 !/.local/bin/*.sh
+!/.local/share/
+!/.local/share/io.github.clash-verge-rev.clash-verge-rev/
+!/.local/share/io.github.clash-verge-rev.clash-verge-rev/profiles/
+!/.local/share/io.github.clash-verge-rev.clash-verge-rev/profiles/Merge.yaml
 
 # senstive files
 .config/git/credentials
