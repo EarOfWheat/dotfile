@@ -116,6 +116,4 @@ eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
 export GPG_TTY=$(tty)
 
-
-
 . "$HOME/.local/share/../bin/env"
